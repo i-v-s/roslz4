@@ -23,12 +23,14 @@ jobs:
       uses: actions/setup-python@v2
       with:
         python-version: ${{ matrix.python-version }}
+
     - name: Install dependencies
       run: |
         sudo apt install liblz4-dev
         python -m pip install --upgrade pip
-        pip install catkin-pkg flake8 pytest setuptools wheel
+        pip install catkin-pkg flake8 pytest setuptools wheel twine
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+
     - name: Lint with flake8
       run: |
         # stop the build if there are Python syntax errors or undefined names
@@ -38,9 +40,16 @@ jobs:
     #- name: Test with pytest
     #  run: |
     #    pytest
+
     - name: Build package
       run: python setup.py sdist bdist_wheel
     - uses: actions/upload-artifact@v2
       with:
         name: wheel
         path: dist/*.whl
+
+    - name: Publish distribution 📦 to Test PyPI
+      uses: pypa/gh-action-pypi-publish@master
+      with:
+        password: ${{ secrets.test_pypi_password }}
+        repository_url: https://test.pypi.org/legacy/
