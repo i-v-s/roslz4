@@ -19,4 +19,4 @@ d = generate_distutils_setup(
     requires=[],
 )
 
-setup(name='roslz4', version=d['version'], ext_modules=[roslz4])
+setup(name='roslz4', version=d['version'], ext_modules=[roslz4], setup_requires=['wheel'])
