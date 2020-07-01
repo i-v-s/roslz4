@@ -1,4 +1,4 @@
-from distutils.core import setup, Extension
+from setuptools import setup, Extension
 from catkin_pkg.python_setup import generate_distutils_setup
 
 roslz4 = Extension(
