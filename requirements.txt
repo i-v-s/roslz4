@@ -1,0 +1,9 @@
+PyYAML~=5.3.1
+catkin-pkg~=0.4.22
+pycryptodomex~=3.9.8
+gnupg
+pyros-genmsg~=0.5.8
+pyros-genpy~=0.6.5
+
+python-gnupg~=0.4.6
+rospkg~=1.2.8
