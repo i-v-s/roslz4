@@ -8,7 +8,7 @@ def list_src(dir_name):
     return [
         join(dir_name, fn)
         for fn in listdir(dir_name)
-        if isfile(join(dir_name, fn))
+        if isfile(join(dir_name, fn)) and (fn.endswith('.c') or fn.endswith('.cpp'))
     ]
 
 includes = ['rosbag/include', 'roslz4/include']
